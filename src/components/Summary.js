@@ -18,9 +18,9 @@ const Summary = ({ tasks }) => {
   const percentage = calculateSummary();
 
   return (
-    <div className="mt-4 p-4 bg-purple-600 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold text-white">Summary</h2>
-      <p className="text-white">Success rate: {percentage}%</p>
+    <div className="mt-4 p-4 bg-purple-100 rounded-lg shadow-md">
+      <h2 className="text-xl font-semibold text-purple-700">Summary</h2>
+      <p className="text-purple-700">Success rate: {percentage}%</p>
     </div>
   );
 };

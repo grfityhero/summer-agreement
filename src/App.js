@@ -4,8 +4,13 @@ import TaskTable from "./components/TaskTable";
 import Summary from "./components/Summary";
 
 function App() {
-  const [week, setWeek] = useState(new Date());
+  const [week, setWeek] = useState(new Date().toISOString().substr(0, 10));
   const [tasks, setTasks] = useState({});
+
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || {};
+    setTasks(savedTasks);
+  }, []);
 
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || {};
@@ -18,9 +23,9 @@ function App() {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-purple-200 min-h-screen">
-      <h1 className="text-2xl font-bold mb-4 text-black">
-       אללוש אימוש ואבוש
+    <div className="container mx-auto p-4 bg-gray-100 min-h-screen">
+      <h1 className="text-2xl font-bold mb-4 text-purple-700">
+        Summer Agreement
       </h1>
       <DatePicker week={week} setWeek={setWeek} />
       <TaskTable week={week} tasks={tasks} updateTasks={updateTasks} />

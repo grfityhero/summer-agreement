@@ -34,7 +34,7 @@ const TaskTable = ({ week, tasks, updateTasks }) => {
         {taskList.map((task, index) => (
           <tr
             key={index}
-            className={`bg-${index % 2 === 0 ? "gray-100" : "white"}`}
+            className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
           >
             <td className="border px-4 py-2">{task}</td>
             <td className="border px-4 py-2 text-center">
