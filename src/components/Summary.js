@@ -20,7 +20,7 @@ const Summary = ({ tasks, week }) => {
   return (
     <div className="mt-4 p-4 bg-purple-100 rounded-lg shadow-md">
       <h2 className="text-xl font-semibold text-purple-700">Summary</h2>
-      <p className="text-purple-700">Success rate: {percentage}%</p>
+      <p className="text-purple-700">הצלחה: {percentage}%</p>
     </div>
   );
 };
