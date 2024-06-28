@@ -4,7 +4,13 @@ import TaskTable from "./components/TaskTable";
 import Summary from "./components/Summary";
 
 function App() {
-  const [week, setWeek] = useState(new Date().toISOString().substr(0, 10));
+  const getStartOfWeek = (date) => {
+    const current = new Date(date);
+    const first = current.getDate() - current.getDay();
+    return new Date(current.setDate(first)).toISOString().substr(0, 10);
+  };
+
+  const [week, setWeek] = useState(getStartOfWeek(new Date()));
   const [tasks, setTasks] = useState({});
 
   useEffect(() => {
@@ -27,9 +33,12 @@ function App() {
       <h1 className="text-2xl font-bold mb-4 text-purple-700">
         Summer Agreement
       </h1>
-      <DatePicker week={week} setWeek={setWeek} />
+      <DatePicker
+        week={week}
+        setWeek={(date) => setWeek(getStartOfWeek(date))}
+      />
       <TaskTable week={week} tasks={tasks} updateTasks={updateTasks} />
-      <Summary tasks={tasks} />
+      <Summary tasks={tasks} week={week} />
     </div>
   );
 }

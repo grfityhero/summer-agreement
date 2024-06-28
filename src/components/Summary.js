@@ -1,16 +1,16 @@
 import React from "react";
 
-const Summary = ({ tasks }) => {
+const Summary = ({ tasks, week }) => {
   const calculateSummary = () => {
     let total = 0;
     let success = 0;
 
-    Object.keys(tasks).forEach((week) => {
+    if (tasks[week]) {
       Object.keys(tasks[week]).forEach((task) => {
         total += 1;
         if (tasks[week][task].success) success += 1;
       });
-    });
+    }
 
     return total > 0 ? Math.round((success / total) * 100) : 0;
   };
